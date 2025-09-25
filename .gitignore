@@ -1,2 +1,4 @@
 /src/kmeans_color_palette/__pycache__/
 /src/kmeans_color_palette/modules/__pycache__/
+/src/dist/
+/src/kmeans_color_palette.egg-info
