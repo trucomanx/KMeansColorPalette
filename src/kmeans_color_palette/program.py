@@ -63,7 +63,7 @@ configure.verify_default_config(CONFIG_PATH, default_content = DEFAULT_CONTENT)
 
 CONFIG=configure.load_config(CONFIG_PATH)
 
-#CONFIG = merge_defaults(CONFIG, DEFAULT_CONTENT)
+CONFIG = configure.merge_defaults(CONFIG, DEFAULT_CONTENT)
 
 
 
@@ -119,6 +119,7 @@ class ColorPaletteGUI(QMainWindow):
         
         # button
         self.btn_file = QPushButton(CONFIG["select_image"])
+        self.btn_file.setIcon(QIcon.fromTheme("document-open"))
         self.btn_file.clicked.connect(self.select_file)
         file_layout.addWidget(self.btn_file)
         
@@ -161,6 +162,7 @@ class ColorPaletteGUI(QMainWindow):
 
         # --- Botão processar ---
         self.btn_process = QPushButton(CONFIG["process_image"])
+        self.btn_process.setIcon(QIcon.fromTheme("system-run"))
         self.btn_process.clicked.connect(self.process_image)
         main_layout.addWidget(self.btn_process)
 
@@ -174,9 +176,10 @@ class ColorPaletteGUI(QMainWindow):
         main_layout.addWidget(self.scroll_area)
 
         # --- Botão gerar paleta ---
-        btn_generate = QPushButton(CONFIG["generate_palette"])
-        btn_generate.clicked.connect(self.generate_palette)
-        main_layout.addWidget(btn_generate)
+        self.btn_generate = QPushButton(CONFIG["generate_palette"])
+        self.btn_generate.setIcon(QIcon.fromTheme("image-x-generic"))
+        self.btn_generate.clicked.connect(self.generate_palette)
+        main_layout.addWidget(self.btn_generate)
 
     def init_progress_ui(self):
         # Criar barra de progresso
