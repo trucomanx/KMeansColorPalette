@@ -374,6 +374,7 @@ class ColorPaletteGUI(QMainWindow):
             # Quadrado de cor com checkbox
             chk = QCheckBox()
             img_path = os.path.join(self.base_dir_path, 'icons', 'check.svg')
+            img_path = img_path.replace("\\", "/")
             chk.setStyleSheet(f"""
                 QCheckBox {{
                     background-color: rgb{cdata['centroid']};
@@ -431,7 +432,7 @@ class ColorPaletteGUI(QMainWindow):
             return  # usuário cancelou
 
         # --- Salvar JSON ---
-        json_path = f"{save_dir}/color_palette.json"
+        json_path = os.path.join(save_dir,"color_palette.json")
         with open(json_path, "w") as f:
             json.dump([{"r": r, "g": g, "b": b} for r, g, b in selected_colors], f, indent=2)
 
@@ -451,7 +452,7 @@ class ColorPaletteGUI(QMainWindow):
                 for yi in range(bar_height):
                     new_img.putpixel((xi, h + yi), c)
 
-        png_path = f"{save_dir}/color_palette.png"
+        png_path = os.path.join(save_dir,"color_palette.png")
         new_img.save(png_path)
 
         QMessageBox.information(
@@ -466,18 +467,18 @@ def main():
     
     create_desktop_directory()    
     create_desktop_menu()
-    create_desktop_file('~/.local/share/applications')
+    create_desktop_file(os.path.join("~",".local","share","applications"))
     
     for n in range(len(sys.argv)):
         if sys.argv[n] == "--autostart":
             create_desktop_directory(overwrite = True)
             create_desktop_menu(overwrite = True)
-            create_desktop_file('~/.config/autostart', overwrite=True)
+            create_desktop_file(os.path.join("~",".config","autostart"), overwrite=True)
             return
         if sys.argv[n] == "--applications":
             create_desktop_directory(overwrite = True)
             create_desktop_menu(overwrite = True)
-            create_desktop_file('~/.local/share/applications', overwrite=True)
+            create_desktop_file(os.path.join("~",".local","share","applications"), overwrite=True)
             return
     
     app = QApplication(sys.argv)
