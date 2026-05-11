@@ -1,6 +1,6 @@
 # about.py
 
-__version__ = "0.1.2"
+__version__ = "0.1.3"
 __package__ = "kmeans_color_palette"
 __program_name__ = "kmeans-color-palette"
 __author__ = "Fernando Pujaico Rivera" 
