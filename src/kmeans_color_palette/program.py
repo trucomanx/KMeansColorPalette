@@ -41,7 +41,9 @@ CONFIG_PATH = os.path.join( os.path.expanduser("~"),
                             "config.json")
 
 
-DEFAULT_CONTENT = { "toolbar_configure": "Configure",
+DEFAULT_CONTENT = { "toolbar_colorpallete": "Find palletes",
+                    "toolbar_colorpallete_tooltip": "Open site with many color palletes",
+                    "toolbar_configure": "Configure",
                     "toolbar_configure_tooltip": "Open the configure Json file",
                     "toolbar_about": "About",
                     "toolbar_about_tooltip": "About the program",
@@ -202,20 +204,31 @@ class ColorPaletteGUI(QMainWindow):
         # Adicionar o espaçador
         spacer = QWidget()
         spacer.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        self.toolbar.addWidget(spacer)
+
+        # Color pallete
+        self.colorpallete_action = QAction(QIcon(resource_path('icons', 'web-browser.png')), 
+                                        CONFIG["toolbar_colorpallete"], 
+                                        self)
+        self.colorpallete_action.setToolTip(CONFIG["toolbar_colorpallete_tooltip"])
+        self.colorpallete_action.triggered.connect(self.on_web_color_pallete)
+        self.toolbar.addAction(self.colorpallete_action)
         
-        #
+        # Text configure
         self.configure_action = QAction(QIcon(resource_path('icons', 'text-configure.png')), 
                                         CONFIG["toolbar_configure"], 
                                         self)
         self.configure_action.setToolTip(CONFIG["toolbar_configure_tooltip"])
         self.configure_action.triggered.connect(self.open_configure_editor)
+        self.toolbar.addAction(self.configure_action)
         
-        #
+        # Help
         self.about_action = QAction(    QIcon(resource_path('icons', 'status_help.png')), 
                                         CONFIG["toolbar_about"], 
                                         self)
         self.about_action.setToolTip(CONFIG["toolbar_about_tooltip"])
         self.about_action.triggered.connect(self.open_about)
+        self.toolbar.addAction(self.about_action)
         
         # Coffee
         self.coffee_action = QAction(   QIcon(resource_path('icons', 'emote-love.png')), 
@@ -223,10 +236,6 @@ class ColorPaletteGUI(QMainWindow):
                                         self)
         self.coffee_action.setToolTip(CONFIG["toolbar_coffee_tooltip"])
         self.coffee_action.triggered.connect(self.on_coffee_action_click)
-    
-        self.toolbar.addWidget(spacer)
-        self.toolbar.addAction(self.configure_action)
-        self.toolbar.addAction(self.about_action)
         self.toolbar.addAction(self.coffee_action)
 
     def open_configure_editor(self):
@@ -234,6 +243,9 @@ class ColorPaletteGUI(QMainWindow):
             os.startfile(CONFIG_PATH)
         elif os.name == 'posix':  # Linux/macOS
             subprocess.run(['xdg-open', CONFIG_PATH])
+    
+    def on_web_color_pallete(self):
+        QDesktopServices.openUrl(QUrl("https://pinterest.com/search/pins/?q=color%20pallete%20photo&rs=typed"))
 
     def on_coffee_action_click(self):
         QDesktopServices.openUrl(QUrl("https://ko-fi.com/trucomanx"))
