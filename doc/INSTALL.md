@@ -21,7 +21,7 @@ kmeans-color-palette
 Installing `kmeans-color-palette` program
 
 ```bash
-git clone https://github.com/trucomanx/KMeansColorPalette.git
+git clone https://github.com/trucomanx-desktop/KMeansColorPalette.git
 cd KMeansColorPalette
 pip install -r requirements.txt
 cd src
