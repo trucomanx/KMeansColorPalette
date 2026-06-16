@@ -11,6 +11,12 @@ The homepage in pipy is https://pypi.org/project/kmeans-color-palette/
 pip install --upgrade kmeans-color-palette
 ```
 
+or
+
+```bash
+pipx install kmeans-color-palette
+```
+
 Using:
 
 ```bash
