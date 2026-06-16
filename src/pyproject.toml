@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "kmeans_color_palette"
-version = "0.1.5"
+version = "0.1.6"
 description = "Color palette generator using the k-means algorithm."
 readme = "README.md"
 authors = [{name = "Fernando Pujaico Rivera", email = "fernando.pujaico.rivera@gmail.com"}]
@@ -22,7 +22,7 @@ dependencies = [
     "scikit-learn",
     "numpy",
     "Pillow",
-    "opencv-python"
+    "opencv-python-headless"
 ]
 
 [project.urls]

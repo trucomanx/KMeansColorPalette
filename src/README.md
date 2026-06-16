@@ -8,12 +8,21 @@ Color palette generator using the k-means algorithm.
 
 To install the package from [PyPI](https://pypi.org/project/kmeans-color-palette/), follow the instructions below:
 
+### With pip
 
 ```bash
 pip install --upgrade kmeans-color-palette
 ```
 
 Execute `which kmeans-color-palette` to see where it was installed, probably in `/home/USERNAME/.local/bin/kmeans-color-palette`.
+
+### With pipx (recommended for desktop applications)
+
+```bash
+pipx install kmeans-color-palette
+```
+
+If you need to upgrade later: `pipx upgrade kmeans-color-palette`
 
 ### Using
 

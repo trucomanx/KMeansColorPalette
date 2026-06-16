@@ -49,7 +49,7 @@ dependencies = [
     "scikit-learn",
     "numpy",
     "Pillow",
-    "opencv-python"
+    "opencv-python-headless"
 ]
 
 [project.urls]
